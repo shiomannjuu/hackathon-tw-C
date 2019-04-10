@@ -2,14 +2,13 @@
 
 module.exports = function (socket, io) {
 
-    socket.on('sendMessageEvent', function (data) {
-      if (!data) {
+    socket.on('sendMessageEvent', function (message,userName) {
+      if (!message) {
         return;
       }
 
- console.log('ユーザの入力値:' +data);
-  io.sockets.emit('receiveMessageEvent',data);
 
-    
+ console.log('ユーザの入力値:' +message,userName);
+  io.sockets.emit('receiveMessageEvent',message,userName);
     });
 };
